@@ -92,6 +92,9 @@
             this.YxyBottom_textBox = new System.Windows.Forms.TextBox();
             this.eyBottom_textBox = new System.Windows.Forms.TextBox();
             this.exBottom_textBox = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // E1_textBox
@@ -309,7 +312,7 @@
             this.nextLayerButton.Location = new System.Drawing.Point(370, 256);
             this.nextLayerButton.Name = "nextLayerButton";
             this.nextLayerButton.Size = new System.Drawing.Size(121, 23);
-            this.nextLayerButton.TabIndex = 23;
+            this.nextLayerButton.TabIndex = 19;
             this.nextLayerButton.Text = "Next Layer -->";
             this.nextLayerButton.UseVisualStyleBackColor = true;
             this.nextLayerButton.Click += new System.EventHandler(this.nextLayerButton_Click);
@@ -330,7 +333,7 @@
             this.previousLayerButton.Location = new System.Drawing.Point(179, 256);
             this.previousLayerButton.Name = "previousLayerButton";
             this.previousLayerButton.Size = new System.Drawing.Size(121, 23);
-            this.previousLayerButton.TabIndex = 25;
+            this.previousLayerButton.TabIndex = 18;
             this.previousLayerButton.Text = "<-- Previous Layer";
             this.previousLayerButton.UseVisualStyleBackColor = true;
             this.previousLayerButton.Click += new System.EventHandler(this.previousLayerButton_Click);
@@ -439,7 +442,7 @@
             this.Mxy_textBox.Location = new System.Drawing.Point(410, 186);
             this.Mxy_textBox.Name = "Mxy_textBox";
             this.Mxy_textBox.Size = new System.Drawing.Size(100, 23);
-            this.Mxy_textBox.TabIndex = 41;
+            this.Mxy_textBox.TabIndex = 17;
             this.Mxy_textBox.Text = "0";
             this.Mxy_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
             // 
@@ -449,7 +452,7 @@
             this.My_textBox.Location = new System.Drawing.Point(410, 157);
             this.My_textBox.Name = "My_textBox";
             this.My_textBox.Size = new System.Drawing.Size(100, 23);
-            this.My_textBox.TabIndex = 40;
+            this.My_textBox.TabIndex = 16;
             this.My_textBox.Text = "0";
             this.My_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
             // 
@@ -459,7 +462,7 @@
             this.Mx_textBox.Location = new System.Drawing.Point(410, 128);
             this.Mx_textBox.Name = "Mx_textBox";
             this.Mx_textBox.Size = new System.Drawing.Size(100, 23);
-            this.Mx_textBox.TabIndex = 39;
+            this.Mx_textBox.TabIndex = 15;
             this.Mx_textBox.Text = "1";
             this.Mx_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
             // 
@@ -469,7 +472,7 @@
             this.Nxy_textBox.Location = new System.Drawing.Point(410, 99);
             this.Nxy_textBox.Name = "Nxy_textBox";
             this.Nxy_textBox.Size = new System.Drawing.Size(100, 23);
-            this.Nxy_textBox.TabIndex = 38;
+            this.Nxy_textBox.TabIndex = 14;
             this.Nxy_textBox.Text = "0";
             this.Nxy_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
             // 
@@ -479,7 +482,7 @@
             this.Ny_textBox.Location = new System.Drawing.Point(410, 70);
             this.Ny_textBox.Name = "Ny_textBox";
             this.Ny_textBox.Size = new System.Drawing.Size(100, 23);
-            this.Ny_textBox.TabIndex = 37;
+            this.Ny_textBox.TabIndex = 13;
             this.Ny_textBox.Text = "0";
             this.Ny_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
             // 
@@ -489,7 +492,7 @@
             this.Nx_textBox.Location = new System.Drawing.Point(410, 41);
             this.Nx_textBox.Name = "Nx_textBox";
             this.Nx_textBox.Size = new System.Drawing.Size(100, 23);
-            this.Nx_textBox.TabIndex = 36;
+            this.Nx_textBox.TabIndex = 12;
             this.Nx_textBox.Text = "0";
             this.Nx_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
             // 
@@ -733,11 +736,41 @@
             this.exBottom_textBox.TabIndex = 60;
             this.exBottom_textBox.TabStop = false;
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(263, 476);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(26, 15);
+            this.label21.TabIndex = 66;
+            this.label21.Text = "Top";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(357, 476);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(47, 15);
+            this.label22.TabIndex = 67;
+            this.label22.Text = "Bottom";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(290, 531);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(75, 15);
+            this.label23.TabIndex = 68;
+            this.label23.Text = "Q-Bar Matrix";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(659, 730);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label21);
             this.Controls.Add(this.tauXYBottom_textBox);
             this.Controls.Add(this.sigmaYBottom_textBox);
             this.Controls.Add(this.sigmaXBottom_textBox);
@@ -876,5 +909,8 @@
         private TextBox YxyBottom_textBox;
         private TextBox eyBottom_textBox;
         private TextBox exBottom_textBox;
+        private Label label21;
+        private Label label22;
+        private Label label23;
     }
 }

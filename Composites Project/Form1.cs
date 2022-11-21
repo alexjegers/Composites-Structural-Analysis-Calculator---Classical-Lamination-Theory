@@ -204,7 +204,7 @@ namespace Composites_Project
             {
                 MessageBox.Show("Please make sure all values are entered.");
             }
-
+            displayedLayer_label.Text = "Layer " + Convert.ToString(layerToDisplay + 1);
         }
 
         private void nextLayerButton_Click(object sender, EventArgs e)
