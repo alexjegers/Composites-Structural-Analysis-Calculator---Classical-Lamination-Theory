@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.E1_textBox = new System.Windows.Forms.TextBox();
             this.E2_textBox = new System.Windows.Forms.TextBox();
             this.G12_textBox = new System.Windows.Forms.TextBox();
@@ -95,72 +96,90 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.layer6Angle_textBox = new System.Windows.Forms.TextBox();
+            this.processTemp_textBox = new System.Windows.Forms.TextBox();
+            this.roomTemp_textBox = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.alpha1_textBox = new System.Windows.Forms.TextBox();
+            this.alpha2_textBox = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // E1_textBox
             // 
             this.E1_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.E1_textBox.Location = new System.Drawing.Point(135, 41);
+            this.E1_textBox.Location = new System.Drawing.Point(403, 41);
             this.E1_textBox.Name = "E1_textBox";
             this.E1_textBox.Size = new System.Drawing.Size(100, 23);
             this.E1_textBox.TabIndex = 0;
-            this.E1_textBox.Text = "19.981";
+            this.E1_textBox.Text = "20.010E6";
             this.E1_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
             // 
             // E2_textBox
             // 
             this.E2_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.E2_textBox.Location = new System.Drawing.Point(135, 70);
+            this.E2_textBox.Location = new System.Drawing.Point(403, 70);
             this.E2_textBox.Name = "E2_textBox";
             this.E2_textBox.Size = new System.Drawing.Size(100, 23);
             this.E2_textBox.TabIndex = 1;
-            this.E2_textBox.Text = "11.389";
+            this.E2_textBox.Text = "1.301E6";
             this.E2_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
             // 
             // G12_textBox
             // 
             this.G12_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.G12_textBox.Location = new System.Drawing.Point(135, 99);
+            this.G12_textBox.Location = new System.Drawing.Point(403, 99);
             this.G12_textBox.Name = "G12_textBox";
             this.G12_textBox.Size = new System.Drawing.Size(100, 23);
             this.G12_textBox.TabIndex = 2;
-            this.G12_textBox.Text = "3.789";
+            this.G12_textBox.Text = "1.001E6";
             this.G12_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
             // 
             // numLayers_textBox
             // 
             this.numLayers_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.numLayers_textBox.Location = new System.Drawing.Point(135, 186);
+            this.numLayers_textBox.Location = new System.Drawing.Point(403, 186);
             this.numLayers_textBox.Name = "numLayers_textBox";
             this.numLayers_textBox.Size = new System.Drawing.Size(100, 23);
             this.numLayers_textBox.TabIndex = 5;
+            this.numLayers_textBox.Text = "3";
             this.numLayers_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
             // 
             // plyThickness_textBox
             // 
             this.plyThickness_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.plyThickness_textBox.Location = new System.Drawing.Point(135, 157);
+            this.plyThickness_textBox.Location = new System.Drawing.Point(403, 157);
             this.plyThickness_textBox.Name = "plyThickness_textBox";
             this.plyThickness_textBox.Size = new System.Drawing.Size(100, 23);
             this.plyThickness_textBox.TabIndex = 4;
-            this.plyThickness_textBox.Text = ".000635";
+            this.plyThickness_textBox.Text = ".005";
             this.plyThickness_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
             // 
             // v12_textBox
             // 
             this.v12_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.v12_textBox.Location = new System.Drawing.Point(135, 128);
+            this.v12_textBox.Location = new System.Drawing.Point(403, 128);
             this.v12_textBox.Name = "v12_textBox";
             this.v12_textBox.Size = new System.Drawing.Size(100, 23);
             this.v12_textBox.TabIndex = 3;
-            this.v12_textBox.Text = ".274";
+            this.v12_textBox.Text = ".3";
             this.v12_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
             // 
             // E1_label
             // 
             this.E1_label.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.E1_label.AutoSize = true;
-            this.E1_label.Location = new System.Drawing.Point(110, 49);
+            this.E1_label.Location = new System.Drawing.Point(378, 49);
             this.E1_label.Name = "E1_label";
             this.E1_label.Size = new System.Drawing.Size(19, 15);
             this.E1_label.TabIndex = 7;
@@ -170,7 +189,7 @@
             // 
             this.E2_label.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.E2_label.AutoSize = true;
-            this.E2_label.Location = new System.Drawing.Point(110, 78);
+            this.E2_label.Location = new System.Drawing.Point(378, 78);
             this.E2_label.Name = "E2_label";
             this.E2_label.Size = new System.Drawing.Size(19, 15);
             this.E2_label.TabIndex = 8;
@@ -180,7 +199,7 @@
             // 
             this.G12_label.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.G12_label.AutoSize = true;
-            this.G12_label.Location = new System.Drawing.Point(102, 107);
+            this.G12_label.Location = new System.Drawing.Point(370, 107);
             this.G12_label.Name = "G12_label";
             this.G12_label.Size = new System.Drawing.Size(27, 15);
             this.G12_label.TabIndex = 9;
@@ -190,7 +209,7 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(104, 136);
+            this.label4.Location = new System.Drawing.Point(372, 136);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(25, 15);
             this.label4.TabIndex = 10;
@@ -200,7 +219,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(52, 165);
+            this.label5.Location = new System.Drawing.Point(320, 165);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(77, 15);
             this.label5.TabIndex = 11;
@@ -210,7 +229,7 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(28, 194);
+            this.label6.Location = new System.Drawing.Point(296, 194);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(101, 15);
             this.label6.TabIndex = 12;
@@ -219,7 +238,7 @@
             // q66t_textBox
             // 
             this.q66t_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.q66t_textBox.Location = new System.Drawing.Point(385, 607);
+            this.q66t_textBox.Location = new System.Drawing.Point(653, 607);
             this.q66t_textBox.Name = "q66t_textBox";
             this.q66t_textBox.ReadOnly = true;
             this.q66t_textBox.Size = new System.Drawing.Size(100, 23);
@@ -229,7 +248,7 @@
             // q26t_textBox2
             // 
             this.q26t_textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.q26t_textBox2.Location = new System.Drawing.Point(279, 607);
+            this.q26t_textBox2.Location = new System.Drawing.Point(547, 607);
             this.q26t_textBox2.Name = "q26t_textBox2";
             this.q26t_textBox2.ReadOnly = true;
             this.q26t_textBox2.Size = new System.Drawing.Size(100, 23);
@@ -239,7 +258,7 @@
             // q16t_textBox2
             // 
             this.q16t_textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.q16t_textBox2.Location = new System.Drawing.Point(173, 607);
+            this.q16t_textBox2.Location = new System.Drawing.Point(441, 607);
             this.q16t_textBox2.Name = "q16t_textBox2";
             this.q16t_textBox2.ReadOnly = true;
             this.q16t_textBox2.Size = new System.Drawing.Size(100, 23);
@@ -249,7 +268,7 @@
             // q26t_textBox
             // 
             this.q26t_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.q26t_textBox.Location = new System.Drawing.Point(385, 578);
+            this.q26t_textBox.Location = new System.Drawing.Point(653, 578);
             this.q26t_textBox.Name = "q26t_textBox";
             this.q26t_textBox.ReadOnly = true;
             this.q26t_textBox.Size = new System.Drawing.Size(100, 23);
@@ -259,7 +278,7 @@
             // q22t_textBox
             // 
             this.q22t_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.q22t_textBox.Location = new System.Drawing.Point(279, 578);
+            this.q22t_textBox.Location = new System.Drawing.Point(547, 578);
             this.q22t_textBox.Name = "q22t_textBox";
             this.q22t_textBox.ReadOnly = true;
             this.q22t_textBox.Size = new System.Drawing.Size(100, 23);
@@ -269,7 +288,7 @@
             // q12t_textBox2
             // 
             this.q12t_textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.q12t_textBox2.Location = new System.Drawing.Point(173, 578);
+            this.q12t_textBox2.Location = new System.Drawing.Point(441, 578);
             this.q12t_textBox2.Name = "q12t_textBox2";
             this.q12t_textBox2.ReadOnly = true;
             this.q12t_textBox2.Size = new System.Drawing.Size(100, 23);
@@ -279,7 +298,7 @@
             // q16t_textBox
             // 
             this.q16t_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.q16t_textBox.Location = new System.Drawing.Point(385, 549);
+            this.q16t_textBox.Location = new System.Drawing.Point(653, 549);
             this.q16t_textBox.Name = "q16t_textBox";
             this.q16t_textBox.ReadOnly = true;
             this.q16t_textBox.Size = new System.Drawing.Size(100, 23);
@@ -289,7 +308,7 @@
             // q12t_textBox
             // 
             this.q12t_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.q12t_textBox.Location = new System.Drawing.Point(279, 549);
+            this.q12t_textBox.Location = new System.Drawing.Point(547, 549);
             this.q12t_textBox.Name = "q12t_textBox";
             this.q12t_textBox.ReadOnly = true;
             this.q12t_textBox.Size = new System.Drawing.Size(100, 23);
@@ -299,7 +318,7 @@
             // q11t_textBox
             // 
             this.q11t_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.q11t_textBox.Location = new System.Drawing.Point(173, 549);
+            this.q11t_textBox.Location = new System.Drawing.Point(441, 549);
             this.q11t_textBox.Name = "q11t_textBox";
             this.q11t_textBox.ReadOnly = true;
             this.q11t_textBox.Size = new System.Drawing.Size(100, 23);
@@ -309,7 +328,7 @@
             // nextLayerButton
             // 
             this.nextLayerButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.nextLayerButton.Location = new System.Drawing.Point(370, 256);
+            this.nextLayerButton.Location = new System.Drawing.Point(638, 256);
             this.nextLayerButton.Name = "nextLayerButton";
             this.nextLayerButton.Size = new System.Drawing.Size(121, 23);
             this.nextLayerButton.TabIndex = 19;
@@ -320,17 +339,17 @@
             // layer1Angle_textBox
             // 
             this.layer1Angle_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.layer1Angle_textBox.Location = new System.Drawing.Point(313, 41);
+            this.layer1Angle_textBox.Location = new System.Drawing.Point(581, 41);
             this.layer1Angle_textBox.Name = "layer1Angle_textBox";
             this.layer1Angle_textBox.Size = new System.Drawing.Size(30, 23);
             this.layer1Angle_textBox.TabIndex = 7;
-            this.layer1Angle_textBox.Text = "0";
+            this.layer1Angle_textBox.Text = "45";
             this.layer1Angle_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
             // 
             // previousLayerButton
             // 
             this.previousLayerButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.previousLayerButton.Location = new System.Drawing.Point(179, 256);
+            this.previousLayerButton.Location = new System.Drawing.Point(447, 256);
             this.previousLayerButton.Name = "previousLayerButton";
             this.previousLayerButton.Size = new System.Drawing.Size(121, 23);
             this.previousLayerButton.TabIndex = 18;
@@ -342,7 +361,7 @@
             // 
             this.displayedLayer_label.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.displayedLayer_label.AutoSize = true;
-            this.displayedLayer_label.Location = new System.Drawing.Point(306, 238);
+            this.displayedLayer_label.Location = new System.Drawing.Point(574, 238);
             this.displayedLayer_label.Name = "displayedLayer_label";
             this.displayedLayer_label.Size = new System.Drawing.Size(44, 15);
             this.displayedLayer_label.TabIndex = 26;
@@ -351,46 +370,48 @@
             // layer2Angle_textBox
             // 
             this.layer2Angle_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.layer2Angle_textBox.Location = new System.Drawing.Point(313, 70);
+            this.layer2Angle_textBox.Location = new System.Drawing.Point(581, 70);
             this.layer2Angle_textBox.Name = "layer2Angle_textBox";
             this.layer2Angle_textBox.Size = new System.Drawing.Size(30, 23);
             this.layer2Angle_textBox.TabIndex = 8;
-            this.layer2Angle_textBox.Text = "30";
+            this.layer2Angle_textBox.Text = "0";
             this.layer2Angle_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
             // 
             // layer3Angle_textBox
             // 
             this.layer3Angle_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.layer3Angle_textBox.Location = new System.Drawing.Point(313, 99);
+            this.layer3Angle_textBox.Location = new System.Drawing.Point(581, 99);
             this.layer3Angle_textBox.Name = "layer3Angle_textBox";
             this.layer3Angle_textBox.Size = new System.Drawing.Size(30, 23);
             this.layer3Angle_textBox.TabIndex = 9;
-            this.layer3Angle_textBox.Text = "60";
+            this.layer3Angle_textBox.Text = "90";
             this.layer3Angle_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
             // 
             // layer4Angle_textBox
             // 
             this.layer4Angle_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.layer4Angle_textBox.Location = new System.Drawing.Point(313, 128);
+            this.layer4Angle_textBox.Location = new System.Drawing.Point(581, 128);
             this.layer4Angle_textBox.Name = "layer4Angle_textBox";
             this.layer4Angle_textBox.Size = new System.Drawing.Size(30, 23);
             this.layer4Angle_textBox.TabIndex = 10;
+            this.layer4Angle_textBox.Text = "0";
             this.layer4Angle_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
             // 
             // layer5Angle_textBox
             // 
             this.layer5Angle_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.layer5Angle_textBox.Location = new System.Drawing.Point(313, 157);
+            this.layer5Angle_textBox.Location = new System.Drawing.Point(581, 157);
             this.layer5Angle_textBox.Name = "layer5Angle_textBox";
             this.layer5Angle_textBox.Size = new System.Drawing.Size(30, 23);
             this.layer5Angle_textBox.TabIndex = 11;
+            this.layer5Angle_textBox.Text = "0";
             this.layer5Angle_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(263, 49);
+            this.label1.Location = new System.Drawing.Point(531, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 15);
             this.label1.TabIndex = 31;
@@ -400,7 +421,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(263, 78);
+            this.label2.Location = new System.Drawing.Point(531, 78);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 15);
             this.label2.TabIndex = 32;
@@ -410,7 +431,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(263, 107);
+            this.label3.Location = new System.Drawing.Point(531, 107);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 15);
             this.label3.TabIndex = 33;
@@ -420,7 +441,7 @@
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(263, 136);
+            this.label7.Location = new System.Drawing.Point(531, 136);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 15);
             this.label7.TabIndex = 34;
@@ -430,7 +451,7 @@
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(263, 165);
+            this.label8.Location = new System.Drawing.Point(531, 165);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 15);
             this.label8.TabIndex = 35;
@@ -439,7 +460,7 @@
             // Mxy_textBox
             // 
             this.Mxy_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Mxy_textBox.Location = new System.Drawing.Point(410, 186);
+            this.Mxy_textBox.Location = new System.Drawing.Point(678, 186);
             this.Mxy_textBox.Name = "Mxy_textBox";
             this.Mxy_textBox.Size = new System.Drawing.Size(100, 23);
             this.Mxy_textBox.TabIndex = 17;
@@ -449,7 +470,7 @@
             // My_textBox
             // 
             this.My_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.My_textBox.Location = new System.Drawing.Point(410, 157);
+            this.My_textBox.Location = new System.Drawing.Point(678, 157);
             this.My_textBox.Name = "My_textBox";
             this.My_textBox.Size = new System.Drawing.Size(100, 23);
             this.My_textBox.TabIndex = 16;
@@ -459,17 +480,17 @@
             // Mx_textBox
             // 
             this.Mx_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Mx_textBox.Location = new System.Drawing.Point(410, 128);
+            this.Mx_textBox.Location = new System.Drawing.Point(678, 128);
             this.Mx_textBox.Name = "Mx_textBox";
             this.Mx_textBox.Size = new System.Drawing.Size(100, 23);
             this.Mx_textBox.TabIndex = 15;
-            this.Mx_textBox.Text = "1";
+            this.Mx_textBox.Text = "0";
             this.Mx_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
             // 
             // Nxy_textBox
             // 
             this.Nxy_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Nxy_textBox.Location = new System.Drawing.Point(410, 99);
+            this.Nxy_textBox.Location = new System.Drawing.Point(678, 99);
             this.Nxy_textBox.Name = "Nxy_textBox";
             this.Nxy_textBox.Size = new System.Drawing.Size(100, 23);
             this.Nxy_textBox.TabIndex = 14;
@@ -479,7 +500,7 @@
             // Ny_textBox
             // 
             this.Ny_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Ny_textBox.Location = new System.Drawing.Point(410, 70);
+            this.Ny_textBox.Location = new System.Drawing.Point(678, 70);
             this.Ny_textBox.Name = "Ny_textBox";
             this.Ny_textBox.Size = new System.Drawing.Size(100, 23);
             this.Ny_textBox.TabIndex = 13;
@@ -489,7 +510,7 @@
             // Nx_textBox
             // 
             this.Nx_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Nx_textBox.Location = new System.Drawing.Point(410, 41);
+            this.Nx_textBox.Location = new System.Drawing.Point(678, 41);
             this.Nx_textBox.Name = "Nx_textBox";
             this.Nx_textBox.Size = new System.Drawing.Size(100, 23);
             this.Nx_textBox.TabIndex = 12;
@@ -500,7 +521,7 @@
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(371, 194);
+            this.label9.Location = new System.Drawing.Point(639, 194);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(30, 15);
             this.label9.TabIndex = 47;
@@ -510,7 +531,7 @@
             // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(377, 165);
+            this.label10.Location = new System.Drawing.Point(645, 165);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(24, 15);
             this.label10.TabIndex = 46;
@@ -520,7 +541,7 @@
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(379, 136);
+            this.label11.Location = new System.Drawing.Point(647, 136);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(24, 15);
             this.label11.TabIndex = 45;
@@ -530,7 +551,7 @@
             // 
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(377, 107);
+            this.label12.Location = new System.Drawing.Point(645, 107);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(28, 15);
             this.label12.TabIndex = 44;
@@ -540,7 +561,7 @@
             // 
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(385, 78);
+            this.label13.Location = new System.Drawing.Point(653, 78);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(22, 15);
             this.label13.TabIndex = 43;
@@ -550,7 +571,7 @@
             // 
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(385, 49);
+            this.label14.Location = new System.Drawing.Point(653, 49);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(22, 15);
             this.label14.TabIndex = 42;
@@ -559,7 +580,7 @@
             // YxyTop_textBox
             // 
             this.YxyTop_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.YxyTop_textBox.Location = new System.Drawing.Point(227, 363);
+            this.YxyTop_textBox.Location = new System.Drawing.Point(495, 363);
             this.YxyTop_textBox.Name = "YxyTop_textBox";
             this.YxyTop_textBox.ReadOnly = true;
             this.YxyTop_textBox.Size = new System.Drawing.Size(100, 23);
@@ -569,7 +590,7 @@
             // eyTop_textBox
             // 
             this.eyTop_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.eyTop_textBox.Location = new System.Drawing.Point(227, 334);
+            this.eyTop_textBox.Location = new System.Drawing.Point(495, 334);
             this.eyTop_textBox.Name = "eyTop_textBox";
             this.eyTop_textBox.ReadOnly = true;
             this.eyTop_textBox.Size = new System.Drawing.Size(100, 23);
@@ -579,7 +600,7 @@
             // exTop_textBox
             // 
             this.exTop_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.exTop_textBox.Location = new System.Drawing.Point(227, 305);
+            this.exTop_textBox.Location = new System.Drawing.Point(495, 305);
             this.exTop_textBox.Name = "exTop_textBox";
             this.exTop_textBox.ReadOnly = true;
             this.exTop_textBox.Size = new System.Drawing.Size(100, 23);
@@ -589,7 +610,7 @@
             // tauXYTop_textBox
             // 
             this.tauXYTop_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tauXYTop_textBox.Location = new System.Drawing.Point(227, 450);
+            this.tauXYTop_textBox.Location = new System.Drawing.Point(495, 450);
             this.tauXYTop_textBox.Name = "tauXYTop_textBox";
             this.tauXYTop_textBox.ReadOnly = true;
             this.tauXYTop_textBox.Size = new System.Drawing.Size(100, 23);
@@ -599,7 +620,7 @@
             // sigmaYtop_textBox
             // 
             this.sigmaYtop_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.sigmaYtop_textBox.Location = new System.Drawing.Point(227, 421);
+            this.sigmaYtop_textBox.Location = new System.Drawing.Point(495, 421);
             this.sigmaYtop_textBox.Name = "sigmaYtop_textBox";
             this.sigmaYtop_textBox.ReadOnly = true;
             this.sigmaYtop_textBox.Size = new System.Drawing.Size(100, 23);
@@ -609,7 +630,7 @@
             // sigmaXtop_textBox
             // 
             this.sigmaXtop_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.sigmaXtop_textBox.Location = new System.Drawing.Point(227, 392);
+            this.sigmaXtop_textBox.Location = new System.Drawing.Point(495, 392);
             this.sigmaXtop_textBox.Name = "sigmaXtop_textBox";
             this.sigmaXtop_textBox.ReadOnly = true;
             this.sigmaXtop_textBox.Size = new System.Drawing.Size(100, 23);
@@ -620,7 +641,7 @@
             // 
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(175, 458);
+            this.label15.Location = new System.Drawing.Point(443, 458);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(42, 15);
             this.label15.TabIndex = 59;
@@ -630,7 +651,7 @@
             // 
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(167, 429);
+            this.label16.Location = new System.Drawing.Point(435, 429);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(50, 15);
             this.label16.TabIndex = 58;
@@ -640,7 +661,7 @@
             // 
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(171, 400);
+            this.label17.Location = new System.Drawing.Point(439, 400);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(50, 15);
             this.label17.TabIndex = 57;
@@ -650,7 +671,7 @@
             // 
             this.label18.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(191, 371);
+            this.label18.Location = new System.Drawing.Point(459, 371);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(26, 15);
             this.label18.TabIndex = 56;
@@ -660,7 +681,7 @@
             // 
             this.label19.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(199, 342);
+            this.label19.Location = new System.Drawing.Point(467, 342);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(19, 15);
             this.label19.TabIndex = 55;
@@ -670,7 +691,7 @@
             // 
             this.label20.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(199, 313);
+            this.label20.Location = new System.Drawing.Point(467, 313);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(19, 15);
             this.label20.TabIndex = 54;
@@ -679,7 +700,7 @@
             // tauXYBottom_textBox
             // 
             this.tauXYBottom_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tauXYBottom_textBox.Location = new System.Drawing.Point(333, 450);
+            this.tauXYBottom_textBox.Location = new System.Drawing.Point(601, 450);
             this.tauXYBottom_textBox.Name = "tauXYBottom_textBox";
             this.tauXYBottom_textBox.ReadOnly = true;
             this.tauXYBottom_textBox.Size = new System.Drawing.Size(100, 23);
@@ -689,7 +710,7 @@
             // sigmaYBottom_textBox
             // 
             this.sigmaYBottom_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.sigmaYBottom_textBox.Location = new System.Drawing.Point(333, 421);
+            this.sigmaYBottom_textBox.Location = new System.Drawing.Point(601, 421);
             this.sigmaYBottom_textBox.Name = "sigmaYBottom_textBox";
             this.sigmaYBottom_textBox.ReadOnly = true;
             this.sigmaYBottom_textBox.Size = new System.Drawing.Size(100, 23);
@@ -699,7 +720,7 @@
             // sigmaXBottom_textBox
             // 
             this.sigmaXBottom_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.sigmaXBottom_textBox.Location = new System.Drawing.Point(333, 392);
+            this.sigmaXBottom_textBox.Location = new System.Drawing.Point(601, 392);
             this.sigmaXBottom_textBox.Name = "sigmaXBottom_textBox";
             this.sigmaXBottom_textBox.ReadOnly = true;
             this.sigmaXBottom_textBox.Size = new System.Drawing.Size(100, 23);
@@ -709,7 +730,7 @@
             // YxyBottom_textBox
             // 
             this.YxyBottom_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.YxyBottom_textBox.Location = new System.Drawing.Point(333, 363);
+            this.YxyBottom_textBox.Location = new System.Drawing.Point(601, 363);
             this.YxyBottom_textBox.Name = "YxyBottom_textBox";
             this.YxyBottom_textBox.ReadOnly = true;
             this.YxyBottom_textBox.Size = new System.Drawing.Size(100, 23);
@@ -719,7 +740,7 @@
             // eyBottom_textBox
             // 
             this.eyBottom_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.eyBottom_textBox.Location = new System.Drawing.Point(333, 334);
+            this.eyBottom_textBox.Location = new System.Drawing.Point(601, 334);
             this.eyBottom_textBox.Name = "eyBottom_textBox";
             this.eyBottom_textBox.ReadOnly = true;
             this.eyBottom_textBox.Size = new System.Drawing.Size(100, 23);
@@ -729,7 +750,7 @@
             // exBottom_textBox
             // 
             this.exBottom_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.exBottom_textBox.Location = new System.Drawing.Point(333, 305);
+            this.exBottom_textBox.Location = new System.Drawing.Point(601, 305);
             this.exBottom_textBox.Name = "exBottom_textBox";
             this.exBottom_textBox.ReadOnly = true;
             this.exBottom_textBox.Size = new System.Drawing.Size(100, 23);
@@ -738,8 +759,9 @@
             // 
             // label21
             // 
+            this.label21.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(263, 476);
+            this.label21.Location = new System.Drawing.Point(534, 476);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(26, 15);
             this.label21.TabIndex = 66;
@@ -747,8 +769,9 @@
             // 
             // label22
             // 
+            this.label22.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(357, 476);
+            this.label22.Location = new System.Drawing.Point(628, 476);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(47, 15);
             this.label22.TabIndex = 67;
@@ -756,18 +779,205 @@
             // 
             // label23
             // 
+            this.label23.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(290, 531);
+            this.label23.Location = new System.Drawing.Point(561, 531);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(75, 15);
             this.label23.TabIndex = 68;
             this.label23.Text = "Q-Bar Matrix";
             // 
+            // label24
+            // 
+            this.label24.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(531, 194);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(44, 15);
+            this.label24.TabIndex = 70;
+            this.label24.Text = "Layer 6";
+            // 
+            // layer6Angle_textBox
+            // 
+            this.layer6Angle_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.layer6Angle_textBox.Location = new System.Drawing.Point(581, 186);
+            this.layer6Angle_textBox.Name = "layer6Angle_textBox";
+            this.layer6Angle_textBox.Size = new System.Drawing.Size(30, 23);
+            this.layer6Angle_textBox.TabIndex = 69;
+            this.layer6Angle_textBox.Text = "0";
+            // 
+            // processTemp_textBox
+            // 
+            this.processTemp_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.processTemp_textBox.Location = new System.Drawing.Point(905, 41);
+            this.processTemp_textBox.Name = "processTemp_textBox";
+            this.processTemp_textBox.Size = new System.Drawing.Size(100, 23);
+            this.processTemp_textBox.TabIndex = 71;
+            this.processTemp_textBox.Text = "350";
+            this.processTemp_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
+            // 
+            // roomTemp_textBox
+            // 
+            this.roomTemp_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.roomTemp_textBox.Location = new System.Drawing.Point(905, 70);
+            this.roomTemp_textBox.Name = "roomTemp_textBox";
+            this.roomTemp_textBox.Size = new System.Drawing.Size(100, 23);
+            this.roomTemp_textBox.TabIndex = 72;
+            this.roomTemp_textBox.Text = "70";
+            this.roomTemp_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
+            // 
+            // label25
+            // 
+            this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(820, 49);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(79, 15);
+            this.label25.TabIndex = 73;
+            this.label25.Text = "Process Temp";
+            // 
+            // label26
+            // 
+            this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(828, 78);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(71, 15);
+            this.label26.TabIndex = 74;
+            this.label26.Text = "Room Temp";
+            // 
+            // alpha1_textBox
+            // 
+            this.alpha1_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.alpha1_textBox.Location = new System.Drawing.Point(905, 128);
+            this.alpha1_textBox.Name = "alpha1_textBox";
+            this.alpha1_textBox.Size = new System.Drawing.Size(100, 23);
+            this.alpha1_textBox.TabIndex = 75;
+            this.alpha1_textBox.Text = "-.072E-6";
+            this.alpha1_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
+            // 
+            // alpha2_textBox
+            // 
+            this.alpha2_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.alpha2_textBox.Location = new System.Drawing.Point(905, 157);
+            this.alpha2_textBox.Name = "alpha2_textBox";
+            this.alpha2_textBox.Size = new System.Drawing.Size(100, 23);
+            this.alpha2_textBox.TabIndex = 76;
+            this.alpha2_textBox.Text = "32.4E-6";
+            this.alpha2_textBox.TextChanged += new System.EventHandler(this.textBoxTextChanged);
+            // 
+            // label27
+            // 
+            this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(852, 136);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(47, 15);
+            this.label27.TabIndex = 77;
+            this.label27.Text = "alpha_1";
+            // 
+            // label28
+            // 
+            this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(852, 165);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(47, 15);
+            this.label28.TabIndex = 78;
+            this.label28.Text = "alpha_2";
+            // 
+            // label29
+            // 
+            this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(546, 23);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(101, 15);
+            this.label29.TabIndex = 79;
+            this.label29.Text = "Angles in Degrees";
+            // 
+            // label30
+            // 
+            this.label30.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(678, 23);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(118, 15);
+            this.label30.TabIndex = 80;
+            this.label30.Text = "Forces and Moments";
+            // 
+            // label31
+            // 
+            this.label31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(403, 23);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(106, 15);
+            this.label31.TabIndex = 81;
+            this.label31.Text = "Material Properties";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label32.Location = new System.Drawing.Point(12, 24);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(118, 25);
+            this.label32.TabIndex = 82;
+            this.label32.Text = "Instructions";
+            // 
+            // label33
+            // 
+            this.label33.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(905, 23);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(78, 15);
+            this.label33.TabIndex = 83;
+            this.label33.Text = "Temperatures";
+            // 
+            // label34
+            // 
+            this.label34.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(905, 110);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(116, 15);
+            this.label34.TabIndex = 84;
+            this.label34.Text = "Thermal Coefficients";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label35.Location = new System.Drawing.Point(12, 49);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(267, 170);
+            this.label35.TabIndex = 85;
+            this.label35.Text = resources.GetString("label35.Text");
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 730);
+            this.ClientSize = new System.Drawing.Size(1195, 730);
+            this.Controls.Add(this.label35);
+            this.Controls.Add(this.label34);
+            this.Controls.Add(this.label33);
+            this.Controls.Add(this.label32);
+            this.Controls.Add(this.label31);
+            this.Controls.Add(this.label30);
+            this.Controls.Add(this.label29);
+            this.Controls.Add(this.label28);
+            this.Controls.Add(this.label27);
+            this.Controls.Add(this.alpha2_textBox);
+            this.Controls.Add(this.alpha1_textBox);
+            this.Controls.Add(this.label26);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.roomTemp_textBox);
+            this.Controls.Add(this.processTemp_textBox);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.layer6Angle_textBox);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
@@ -836,8 +1046,7 @@
             this.Controls.Add(this.E2_textBox);
             this.Controls.Add(this.E1_textBox);
             this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.textBoxTextChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -912,5 +1121,22 @@
         private Label label21;
         private Label label22;
         private Label label23;
+        private Label label24;
+        private TextBox layer6Angle_textBox;
+        private TextBox processTemp_textBox;
+        private TextBox roomTemp_textBox;
+        private Label label25;
+        private Label label26;
+        private TextBox alpha1_textBox;
+        private TextBox alpha2_textBox;
+        private Label label27;
+        private Label label28;
+        private Label label29;
+        private Label label30;
+        private Label label31;
+        private Label label32;
+        private Label label33;
+        private Label label34;
+        private Label label35;
     }
 }

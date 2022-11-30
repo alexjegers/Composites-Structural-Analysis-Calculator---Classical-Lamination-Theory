@@ -57,4 +57,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label35.Text" xml:space="preserve">
+    <value>Enter data into respective textboxes.
+Every textbox has to have a number in it for 
+the program to run.
+
+For unused layers enter 0. i.e. if you have
+4 layers,enter 0 for layer 5 and layer 6.
+
+If thermal stresses and strains are to be 
+ignored, enter 0 for process temp, room 
+temp, alpha 1, and alpha 2.</value>
+  </data>
 </root>

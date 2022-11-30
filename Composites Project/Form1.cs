@@ -5,25 +5,31 @@ namespace Composites_Project
 {
     public partial class Form1 : Form
     {
-        List<compositeLayer> layers = new List<compositeLayer>();
-        List<TextBox> angles = new List<TextBox>();
-        int layerToDisplay = 0;
-        Matrix<double> laminate_strains;
-        Matrix<double> laminate_curvatures;
+        List<compositeLayer> layers = new List<compositeLayer>();           //Create list to store all the composite layers.
+        List<TextBox> angles = new List<TextBox>();                         //Create list to hold all the angles of the plys that are entered into the textboxes.
+        int layerToDisplay = 0;                                             //Used to display a certain layer's info on the form.
+        Matrix<double> midplane_strains;                                    //Define the midplane strains matrix.
+        Matrix<double> midplane_curvatures;                                 //Define the midplane curvatures matrix.
 
 
         public Form1()
         {
+            /*Load all the form components.*/
             InitializeComponent();
+
+            /*Add all the angle textboxes to the list.*/
             angles.Add(layer1Angle_textBox);
             angles.Add(layer2Angle_textBox);
             angles.Add(layer3Angle_textBox);
             angles.Add(layer4Angle_textBox);
             angles.Add(layer5Angle_textBox);
+            angles.Add(layer6Angle_textBox);
         }
 
+        /*Event handler runs anytime of the data textboxes changes.*/
         private void textBoxTextChanged(object sender, EventArgs e)
         {
+            /*Start by clearing all the previous layers information.*/
             layers.Clear();
             try
             {
@@ -44,6 +50,7 @@ namespace Composites_Project
                 compositeLayer.Mxy = Convert.ToDouble(Mxy_textBox.Text);
 
                 /* Allocate new compositeLayer classes for each layer in the part. */
+                double top = (compositeLayer.numberOfLayers * compositeLayer.layerThickness) / 2;
                 for (int i = 0; i < compositeLayer.numberOfLayers; i++)
                 {
                     compositeLayer newLayer = new compositeLayer();
@@ -58,13 +65,20 @@ namespace Composites_Project
                     {
                         layers[i].t = Convert.ToDouble(angles[i].Text) * (Math.PI / 180);
                     }
+                    /*Do nothing on an error.*/
                     catch { }
 
                     /* Determine the top and bottom of each layer. */
-                    layers[i].top = (layers.Count - i) * compositeLayer.layerThickness;
-                    layers[i].bottom = (layers.Count - (i + 1)) * compositeLayer.layerThickness;
+                    layers[i].top = top - (i * compositeLayer.layerThickness);
+                    layers[i].bottom = top - ((i + 1) * compositeLayer.layerThickness);
                 }
+
+                compositeLayer.processTemp = Convert.ToDouble(processTemp_textBox.Text);
+                compositeLayer.roomTemp = Convert.ToDouble(roomTemp_textBox.Text);
+                compositeLayer.alpha_1 = Convert.ToDouble(alpha1_textBox.Text);
+                compositeLayer.alpha_2 = Convert.ToDouble(alpha2_textBox.Text);
             }
+            /*If any of the textboxes doesn't have a number entered in it skip the rest of the function and do nothing.*/
             catch
             {
                 return;
@@ -90,100 +104,160 @@ namespace Composites_Project
             double q66b = 0;
             double q66d = 0;
             
+            /*deltaT is the change in temperature.*/
+            double deltaT = compositeLayer.roomTemp - compositeLayer.processTemp; 
+            
             /*Calculate the A,B,D matrix values.*/
             for (int i = 0; i < layers.Count; i++)
             {
                 q11a += layers[i].q11t() * layers[i].hk1();
-                q11b += layers[i].q11t() * (layers[i].hk2() + -layers[i].hk2());
-                q11d += layers[i].q11t() * (layers[i].hk3() * 2);
+                q11b += layers[i].q11t() * (layers[i].hk2());
+                q11d += layers[i].q11t() * (layers[i].hk3());
 
                 q12a += layers[i].q12t() * layers[i].hk1();
-                q12b += layers[i].q12t() * (layers[i].hk2() + -layers[i].hk2());
-                q12d += layers[i].q12t() * (layers[i].hk3() * 2);
+                q12b += layers[i].q12t() * (layers[i].hk2());
+                q12d += layers[i].q12t() * (layers[i].hk3());
 
                 q16a += layers[i].q16t() * layers[i].hk1();
-                q16b += layers[i].q16t() * (layers[i].hk2() + -layers[i].hk2());
-                q16d += layers[i].q16t() * (layers[i].hk3() * 2);
+                q16b += layers[i].q16t() * (layers[i].hk2());
+                q16d += layers[i].q16t() * (layers[i].hk3());
 
                 q26a += layers[i].q26t() * layers[i].hk1();
-                q26b += layers[i].q26t() * (layers[i].hk2() + -layers[i].hk2());
-                q26d += layers[i].q26t() * (layers[i].hk3() * 2);
+                q26b += layers[i].q26t() * (layers[i].hk2());
+                q26d += layers[i].q26t() * (layers[i].hk3());
 
                 q22a += layers[i].q22t() * layers[i].hk1();
-                q22b += layers[i].q22t() * (layers[i].hk2() + -layers[i].hk2());
-                q22d += layers[i].q22t() * (layers[i].hk3() * 2);
+                q22b += layers[i].q22t() * (layers[i].hk2());
+                q22d += layers[i].q22t() * (layers[i].hk3());
 
                 q66a += layers[i].q66t() * layers[i].hk1();
-                q66b += layers[i].q66t() * (layers[i].hk2() + -layers[i].hk2());
-                q66d += layers[i].q66t() * (layers[i].hk3() * 2);
+                q66b += layers[i].q66t() * (layers[i].hk2());
+                q66d += layers[i].q66t() * (layers[i].hk3());
+
+
+
+                /***** Calculate thermal strains ******/
+                /*Create a new matrix for thermal strains.*/
+                Matrix<double> thermal_strains = DenseMatrix.OfArray(new double[3, 1]);
+
+                /*Calculate alpha x, y, and xy.*/
+                layers[i].alpha_x = (compositeLayer.alpha_1 * Math.Pow(Math.Cos(layers[i].t), 2)) + (compositeLayer.alpha_2 * Math.Pow(Math.Sin(layers[i].t), 2));
+                layers[i].alpha_y = (compositeLayer.alpha_1 * Math.Pow(Math.Sin(layers[i].t), 2)) + (compositeLayer.alpha_2 * Math.Pow(Math.Cos(layers[i].t), 2));
+                layers[i].alpha_xy = 2 * Math.Cos(layers[i].t) * Math.Sin(layers[i].t) * (compositeLayer.alpha_1 - compositeLayer.alpha_2);
+                
+                /*Populate the thermal strains matrix.*/
+                thermal_strains[0, 0] = layers[i].alpha_x * deltaT;
+                thermal_strains[1,0] = layers[i].alpha_y * deltaT;
+                thermal_strains[2, 0] = layers[i].alpha_xy * deltaT;
+
+                /*Assign the thermal strains matrix to the compositeLayer object.*/
+                layers[i].thermal_strains.strains = thermal_strains;
             }
 
             /*Assemble the ABD matrix(cies).*/
-            Matrix<double> a_matrix = DenseMatrix.OfArray(new double[,]{ { 2 * q11a, 2 * q12a, 2 * q16a, },
-                                                                        { 2 * q12a, 2 * q22a, 2 * q26a },
-                                                                        { 2 * q16a, 2 * q26a, 2 * q66a } });
+            Matrix<double> a_matrix = DenseMatrix.OfArray(new double[,]{ {q11a,q12a,q16a, },
+                                                                        {q12a,q22a,q26a },
+                                                                        {q16a,q26a,q66a } });
             Matrix<double> b_matrix = DenseMatrix.OfArray(new double[,]{ { q11b / 2, q12b / 2, q16b / 2, },
                                                                         { q12b / 2, q22b / 2, q26b / 2 },
                                                                         { q16b / 2, q26b / 2, q66b / 2 } });
             Matrix<double> d_matrix = DenseMatrix.OfArray(new double[,]{ { q11d / 3, q12d / 3, q16d / 3, },
                                                                         { q12d / 3, q22d / 3, q26d / 3 },
                                                                         { q16d / 3, q26d / 3, q66d / 3 } });
-            Matrix<double> abd_matrix = DenseMatrix.OfArray(new double[,]{ { 2 * q11a, 2 * q12a, 2 * q16a, q11b / 2, q12b / 2, q16b / 2 },
-                                                                            { 2 * q12a, 2 * q22a, 2 * q26a, q12b / 2, q22b / 2, q26b / 2 },
+            Matrix<double> abd_matrix = DenseMatrix.OfArray(new double[,]{ { q11a, q12a, q16a, q11b / 2, q12b / 2, q16b / 2 },
+                                                                            { q12a, q22a, q26a, q12b / 2, q22b / 2, q26b / 2 },
                                                                             { 2 * q16a, 2 * q26a, 2 * q66a, q16b / 2, q26b / 2, q66b / 2 },
                                                                             { q11b / 2, q12b / 2, q16b / 2, q11d / 3, q12d / 3, q16d / 3 },
                                                                             { q12b / 2, q22b / 2, q26b / 2, q12d / 3, q22d / 3, q26d / 3 },
                                                                             { q16b / 2, q26b / 2, q66b / 2, q16d / 3, q26d / 3, q66d / 3 } });
+           /*Get the inverse ABD matrix.*/
             Matrix<double> abd_inv_matrix = abd_matrix.Inverse();
 
-            /*Assemble force and moment matrix.*/
+            /*Find the thermal force resultant matrix.*/
+            double Nxt = 0;
+            double Nyt = 0;
+            double Nxyt = 0;
+            double Mxt = 0;
+            double Myt = 0;
+            double Mxyt = 0;
+
+            for (int i = 0; i < compositeLayer.numberOfLayers; i++)
+            {
+                Nxt += ((layers[i].q11t() * layers[i].alpha_x) + (layers[i].q12t() * layers[i].alpha_y) + (layers[i].q16t() * layers[i].alpha_xy)) * layers[i].hk1();
+                Nyt += ((layers[i].q12t() * layers[i].alpha_x) + (layers[i].q22t() * layers[i].alpha_y) + (layers[i].q26t() * layers[i].alpha_xy)) * layers[i].hk1();
+                Nxyt += ((layers[i].q16t() * layers[i].alpha_x) + (layers[i].q26t() * layers[i].alpha_y) + (layers[i].q66t() * layers[i].alpha_xy)) * layers[i].hk1();
+                Mxt += ((layers[i].q11t() * layers[i].alpha_x) + (layers[i].q12t() * layers[i].alpha_y) + (layers[i].q16t() * layers[i].alpha_xy)) * layers[i].hk2();
+                Myt += ((layers[i].q12t() * layers[i].alpha_x) + (layers[i].q22t() * layers[i].alpha_y) + (layers[i].q26t() * layers[i].alpha_xy)) * layers[i].hk2();
+                Mxyt += ((layers[i].q16t() * layers[i].alpha_x) + (layers[i].q26t() * layers[i].alpha_y) + (layers[i].q66t() * layers[i].alpha_xy)) * layers[i].hk2();
+            }
+            Nxt *= deltaT;
+            Nyt *= deltaT;
+            Nxyt *= deltaT;
+            Mxt *= deltaT / 2;
+            Myt *= deltaT / 2;
+            Mxyt *= deltaT / 2;
+
+            /*Assemble the thermal force resultant matrix.*/
+            Matrix<double> thermal_force_matrix = DenseMatrix.OfArray(new double[,] { { Nxt },
+                                                                                        { Nyt },
+                                                                                        { Nxyt },
+                                                                                        { Mxt },
+                                                                                        { Myt },
+                                                                                        { Mxyt } });
+
+            /*Assemble force matrix due to external forces.*/
             Matrix<double> forces_matrix = DenseMatrix.OfArray(new double[,] { { compositeLayer.Nx },
                                                                                 { compositeLayer.Ny },
                                                                                 { compositeLayer.Nxy },
                                                                                 { compositeLayer.Mx },
                                                                                 { compositeLayer.My },
                                                                                 { compositeLayer.Mxy } });
+            
+            /*Add the thermal forces to the external forces to complete the force resultant matrix.*/
+            forces_matrix = forces_matrix.Add(thermal_force_matrix);
 
             /*Solve for the strain and curvature matrix of the whole composite part.*/
-            Matrix<double> stress_strain_matrix = abd_inv_matrix.Multiply(forces_matrix);
+            Matrix<double> strain_and_curvature = abd_inv_matrix.Multiply(forces_matrix);
             
             /*Break the strain and curvature matrix apart into two seperate matricies, one for strain, one for curvatures.*/
-            laminate_strains = DenseMatrix.OfArray(new double[,] { { stress_strain_matrix[0,0]},
-                                                                    { stress_strain_matrix[1,0] },
-                                                                    { stress_strain_matrix[2,0] }});
-            laminate_curvatures = DenseMatrix.OfArray(new double[,] { { stress_strain_matrix[3, 0] },
-                                                                    { stress_strain_matrix[4, 0] },
-                                                                    { stress_strain_matrix[5, 0] }});
+            midplane_strains = DenseMatrix.OfArray(new double[,] { { strain_and_curvature[0,0]},
+                                                                    { strain_and_curvature[1,0] },
+                                                                    { strain_and_curvature[2,0] }});
+            midplane_curvatures = DenseMatrix.OfArray(new double[,] { { strain_and_curvature[3, 0] },
+                                                                    { strain_and_curvature[4, 0] },
+                                                                    { strain_and_curvature[5, 0] }});
 
+            /*Calculate the stress and strain for each layer.*/
             for (int i = 0; i < compositeLayer.numberOfLayers; i++)
             {
                 Matrix<double> qBarMatrix = DenseMatrix.OfArray(new double[,] { { layers[i].q11t(), layers[i].q12t(), layers[i].q16t()},
                                                                                 { layers[i].q12t(), layers[i].q22t(), layers[i].q26t()},
                                                                                 { layers[i].q16t(), layers[i].q26t(), layers[i].q66t()},});
-                layers[i].top_stress_strain.strains = laminate_strains.Add(laminate_curvatures.Multiply(-layers[i].top));
-                layers[i].bottom_stress_strain.strains = laminate_strains.Add(laminate_curvatures.Multiply(-layers[i].bottom));
-                layers[i].top_stress_strain.stresses = qBarMatrix.Multiply(layers[i].top_stress_strain.strains);
-                layers[i].bottom_stress_strain.stresses = qBarMatrix.Multiply(layers[i].bottom_stress_strain.strains);
+                layers[i].top_stress_strain.strains = midplane_strains.Add(midplane_curvatures.Multiply(layers[i].top));
+                layers[i].bottom_stress_strain.strains = midplane_strains.Add(midplane_curvatures.Multiply(layers[i].bottom));
+                layers[i].top_stress_strain.stresses = qBarMatrix.Multiply(layers[i].top_stress_strain.strains.Subtract(layers[i].thermal_strains.strains));
+                layers[i].bottom_stress_strain.stresses = qBarMatrix.Multiply(layers[i].bottom_stress_strain.strains.Subtract(layers[i].thermal_strains.strains));
                 displayLayer(0);
             }
         }
 
+        /*displayLayer function displays a certain layers stress, strain, and Q bar matrix in the textboxes on the form.*/
         void displayLayer(int layerNumber)
         {
             try
             {
-                compositeLayer thisLayer = layers[layerNumber];
-                q11t_textBox.Text = Convert.ToString(thisLayer.q11t());
-                q12t_textBox.Text = Convert.ToString(thisLayer.q12t());
-                q12t_textBox2.Text = Convert.ToString(thisLayer.q12t());
-                q16t_textBox.Text = Convert.ToString(thisLayer.q16t());
-                q16t_textBox2.Text = Convert.ToString(thisLayer.q16t());
-                q22t_textBox.Text = Convert.ToString(thisLayer.q22t());
-                q26t_textBox.Text = Convert.ToString(thisLayer.q26t());
-                q26t_textBox2.Text = Convert.ToString(thisLayer.q26t());
-                q66t_textBox.Text = Convert.ToString(thisLayer.q66t());
+                compositeLayer thisLayer = layers[layerNumber];                
+                int roundingDigits = 10;
+                q11t_textBox.Text = Convert.ToString(Math.Round(thisLayer.q11t(), roundingDigits));
+                q12t_textBox.Text = Convert.ToString(Math.Round(thisLayer.q12t(), roundingDigits));
+                q12t_textBox2.Text = Convert.ToString(Math.Round(thisLayer.q12t(), roundingDigits));
+                q16t_textBox.Text = Convert.ToString(Math.Round(thisLayer.q16t(), roundingDigits));
+                q16t_textBox2.Text = Convert.ToString(Math.Round(thisLayer.q16t(), roundingDigits));
+                q22t_textBox.Text = Convert.ToString(Math.Round(thisLayer.q22t(), roundingDigits));
+                q26t_textBox.Text = Convert.ToString(Math.Round(thisLayer.q26t(), roundingDigits));
+                q26t_textBox2.Text = Convert.ToString(Math.Round(thisLayer.q26t(), roundingDigits));
+                q66t_textBox.Text = Convert.ToString(Math.Round(thisLayer.q66t(), roundingDigits));
 
-                int roundingDigits = 6;
                 exTop_textBox.Text = Convert.ToString(Math.Round(thisLayer.top_stress_strain.strains[0, 0], roundingDigits));
                 eyTop_textBox.Text = Convert.ToString(Math.Round(thisLayer.top_stress_strain.strains[1, 0], roundingDigits));
                 YxyTop_textBox.Text = Convert.ToString(Math.Round(thisLayer.top_stress_strain.strains[2, 0], roundingDigits));
@@ -207,6 +281,7 @@ namespace Composites_Project
             displayedLayer_label.Text = "Layer " + Convert.ToString(layerToDisplay + 1);
         }
 
+        /*nextLayerButton click increments layeToDisplay when the next layer button is clicked.*/
         private void nextLayerButton_Click(object sender, EventArgs e)
         {
             if (layerToDisplay >= (compositeLayer.numberOfLayers - 1))
@@ -221,6 +296,7 @@ namespace Composites_Project
             displayLayer(layerToDisplay);
         }
 
+        /*previousLayerButton click decrements layerToDisplay when the previous layer button is clicked.*/
         private void previousLayerButton_Click(object sender, EventArgs e)
         {
             if (layerToDisplay == 0)
@@ -235,48 +311,10 @@ namespace Composites_Project
             displayLayer(layerToDisplay);
         }
 
-        public static int[,] matrixMult(int[,] Matrix1, int[,] Matrix2)
-        {
-            if (Object.ReferenceEquals(null, Matrix1))
-                throw new ArgumentNullException("Matrix1");
-            else if (Object.ReferenceEquals(null, Matrix2))
-                throw new ArgumentNullException("Matrix2");
-
-            int r1 = Matrix1.GetLength(0);
-            int c1 = Matrix1.GetLength(1);
-
-            int r2 = Matrix2.GetLength(0);
-            int c2 = Matrix2.GetLength(1);
-
-            if (c1 != r2)
-                throw new ArgumentOutOfRangeException("Matrix2", "Matrixes dimensions don't fit.");
-
-            int[,] result = new int[r1, c2];
-
-            // Naive matrix multiplication: O(n**3) 
-            // Use Strassen algorithm O(n**2.81) in case of big matrices
-            for (int r = 0; r < r1; ++r)
-                for (int c = 0; c < c2; ++c)
-                {
-                    int s = 0;
-
-                    for (int z = 0; z < c1; ++z)
-                        s += Matrix1[r, z] * Matrix2[z, c];
-
-                    result[r, c] = s;
-                }
-
-            return result;
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 
 
-
+    /*compositeLayer is the main class that holds all relevant information to any given layer with the composite.*/
     class compositeLayer
     {
         public static double E1;
@@ -292,6 +330,18 @@ namespace Composites_Project
         public static double Mx;
         public static double My;
         public static double Mxy;
+        public static double processTemp;
+        public static double roomTemp;
+        public static double alpha_1;
+        public static double alpha_2;
+
+        public double alpha_x;
+        public double alpha_y;
+        public double alpha_xy;
+        public double beta_x;
+        public double beta_y;
+        public double beta_xy;
+
         static double v21()
         {
             return (E2 / E1) * v12;
@@ -325,7 +375,7 @@ namespace Composites_Project
         }
         public stress_and_strains top_stress_strain = new stress_and_strains();
         public stress_and_strains bottom_stress_strain = new stress_and_strains();
-
+        public stress_and_strains thermal_strains = new stress_and_strains();
         public double hk1()
         {
             return top - bottom;
@@ -364,9 +414,6 @@ namespace Composites_Project
         }
 
     }
-
-
-
 }
 
 
